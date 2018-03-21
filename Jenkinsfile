@@ -1,18 +1,11 @@
 /*
-This pipeline build example is for a Nodejs application.  The stages within this pipeline will build the app, package the app
-into a zip file, perform a Nexus IQ scan, then call a downstream job to deploy the app to an environment.  These builds are
-considered to be throw away as no GIT tag is created and the build is not stored in Nexus Repo.  This build is intended to
-be a developer quick test.
+
 
 Authors:
 Sean Wilbur (sean.wilbur@perficient.com)
-Geoff Rosenthal (geoffrey.rosenthal@perficient.com)
 
-© 2018 Perficient, Inc. All Rights Reserve
+© 2018 Perficient, Inc. All Rights Reserved
 */
-
-//Leverage Jenkins shared library
-@Library('jenkins-shared-library') _
 
 pipeline{
   //Assume nodes for mulesoft
