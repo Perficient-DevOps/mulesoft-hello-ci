@@ -78,7 +78,6 @@ pipeline{
         // output some information about the environment we just setup
         sh "echo 'version: ${TARGET_VERSION}'"
         sh "echo 'artifact_filename: ${ARTIFACT_FILENAME}'"
-        sh "echo 'target_application: ${TARGET_APPLICATION}'"
       }
     }//End Setup Environment Variables
 
