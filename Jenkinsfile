@@ -71,7 +71,7 @@ pipeline{
           def version = props['version']
           //Define unique build version
           TARGET_VERSION = "$version-$BUILD_TIMESTAMP"
-          ARTIFACT_FILENAME="${NEXUS_ARTIFACTID}-${VERSION_TAG}.zip"
+          ARTIFACT_FILENAME="${NEXUS_ARTIFACTID}-${TARGET_VERSION}.zip"
           // modify build name to match
           currentBuild.displayName = "${TARGET_VERSION}"
         } // end script
