@@ -32,8 +32,7 @@ pipeline{
   }//End environment
 
   triggers {
-    // Poll SCM every 15 minutes for changes
-    pollSCM('H/15 * * * *')
+    githubPush()
   }
 
   stages{
@@ -71,7 +70,7 @@ pipeline{
           def props = readMavenPom file: 'pom.xml'
           def version = props['version']
           //Define unique build version
-          TARGET_VERSION = "$version-$BUILD_TIMESTAMP_STRING"
+          TARGET_VERSION = "$version-$BUILD_TIMESTAMP"
           ARTIFACT_FILENAME="${NEXUS_ARTIFACTID}-${VERSION_TAG}.zip"
           // modify build name to match
           currentBuild.displayName = "${TARGET_VERSION}"
