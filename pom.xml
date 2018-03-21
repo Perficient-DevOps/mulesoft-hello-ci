@@ -14,6 +14,10 @@
 
     <mule.version>3.9.0</mule.version>
     <mule.tools.version>1.2</mule.tools.version>
+
+    <cloudhub.user></cloudhub.user>
+    <cloudhub.pass></cloudhub.pass>
+    <cloudhub.env> </cloudhub.env>
   </properties>
 
   <distributionManagement>
@@ -87,9 +91,9 @@
           <deploymentType>cloudhub</deploymentType>
           <!-- muleVersion is the runtime version as it appears on the CloudHub interface -->
           <muleVersion>3.8.5</muleVersion>
-          <username>your-username</username>
-          <password>your-password</password>
-          <redeploy>true</redeploy>
+          <username>${cloudhub.user}</username>
+          <password>${cloudhub.pass}</password>
+          <redeploy>${cloudhub.env}</redeploy>
           <environment>DEV</environment>
           <workerType>Micro</workerType>
           <properties>

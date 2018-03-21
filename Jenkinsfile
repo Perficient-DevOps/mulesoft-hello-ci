@@ -83,7 +83,20 @@ pipeline{
 
     stage( 'Maven Package' ) {
       steps{
-        sh 'mvn package'
+        sh "mvn package"
+      }
+    }
+
+
+    stage( 'Maven Deploy' ) {
+      steps{
+        withCredentials([[$class: 'UsernamePasswordMultiBinding',
+            credentialsId: 'perficient-cloudhub-serviceid',
+            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]){
+
+              sh "mvn deploy -Dcloudhub.user=$USERNAME -Dcloudhub.pass='$PASSWORD' -Dcloudhub.env=DEV"
+
+         }
       }
     }
 
