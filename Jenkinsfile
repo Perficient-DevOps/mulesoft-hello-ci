@@ -68,7 +68,7 @@ pipeline{
       steps{
         script {
           //Find and store semantic version as specified in package.json to use to create build version label
-          def props = readMavenPOM file: 'pom.xml'
+          def props = readMavenPom file: 'pom.xml'
           def version = props['version']
           //Define unique build version
           TARGET_VERSION = "$version-$BUILD_TIMESTAMP_STRING"
