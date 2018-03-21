@@ -22,9 +22,9 @@
 
   <distributionManagement>
      <repository>
-       <id>internal.repo</id>
-       <name>Internal repo</name>
-       <url>file://c/junk</url>
+       <id>mulesoft-ci-test</id>
+       <name>mulesoft-ci-test</name>
+       <url>http://nexus.devopsinabox.perficientdevops.com:8081/repository/mulesoft-ci-test/</url>
      </repository>
    </distributionManagement>
 
