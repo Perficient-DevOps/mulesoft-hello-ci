@@ -1,13 +1,53 @@
 # Simple MuleSoft project
 
-# Issues
 
- Having problem running `mvn package`
-
-    [ERROR] Failed to execute goal on project hello-ci: Could not resolve dependencies for project com.mycompany:hello-ci:mule:1.0.0-SNAPSHOT: The following artifacts could not be resolved: com.mulesoft.muleesb:mule-core-ee:jar:3.9.0, com.mulesoft.muleesb.modules:mule-module-spring-config-ee:jar:3.9.0, com.mulesoft.muleesb.transports:mule-transport-jdbc-ee:jar:3.9.0, com.mulesoft.muleesb.transports:mule-transport-jms-ee:jar:3.9.0: Failure to find com.mulesoft.muleesb:mule-core-ee:jar:3.9.0 in http://repository.mulesoft.org/releases/ was cached in the local repository, resolution will not be reattempted until the update interval of mulesoft-releases has elapsed or updates are forced -> [Help 1]
 
 # Setup work
- Need to configure Maven to resolve dependencies.
+
+Updated the `~/.m2/settings.xml` to include the mulesoft enterprise repository, which in this case you will need to enter your username and password from you mulesoft service account.
+
+ * https://docs.mulesoft.com/mule-user-guide/v/3.6/configuring-maven-to-work-with-mule-esb
+
+     <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                          https://maven.apache.org/xsd/settings-1.0.0.xsd">
+      <servers>
+        <server>
+          <id>MuleRepository</id>
+          <username>XXX</username>
+          <password>YYY</password>
+        </server>
+      </servers>
+
+      <profiles>
+        <profile>
+          <id>Mule</id>
+          <activation>
+            <activeByDefault>true</activeByDefault>
+          </activation>
+          <repositories>
+            <repository>
+              <id>MuleRepository</id>
+              <name>MuleRepository</name>
+              <url>https://repository.mulesoft.org/nexus-ee/content/repositories/releases-ee/</url>
+              <layout>default</layout>
+              <releases>
+                <enabled>true</enabled>
+              </releases>
+              <snapshots>
+                <enabled>true</enabled>
+              </snapshots>
+            </repository>
+          </repositories>
+        </profile>
+      </profiles>
+
+    </settings>
+
+
+
+Configured Maven `pom.xml` to resolve dependencies as in the documentation:
 
  * https://docs.mulesoft.com/mule-user-guide/v/3.6/configuring-maven-to-work-with-mule-esb
  * https://docs.mulesoft.com/mule-user-guide/v/3.6/mule-esb-plugin-for-maven
